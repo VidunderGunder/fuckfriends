@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Box, Center, Image } from '@mantine/core'
+import { Box, Center } from '@mantine/core'
 import Div100vh from 'react-div-100vh'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -13,7 +13,16 @@ const HomePage = () => {
   return (
     <>
       <MetaTags title="FuckFriends" description="The best of both worlds" />
-      <Div100vh>
+      <Div100vh
+        css={css`
+          /* Remove overscroll and bounce */
+          overscroll-behavior: none;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        `}
+      >
         <Center
           css={css`
             width: 100%;
