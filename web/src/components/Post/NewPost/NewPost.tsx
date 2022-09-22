@@ -1,10 +1,11 @@
+import { css } from '@emotion/react'
+import type { CreatePostInput } from 'types/graphql'
+
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import PostForm from 'src/components/Post/PostForm'
-
-import type { CreatePostInput } from 'types/graphql'
 
 const CREATE_POST_MUTATION = gql`
   mutation CreatePostMutation($input: CreatePostInput!) {
@@ -15,18 +16,15 @@ const CREATE_POST_MUTATION = gql`
 `
 
 const NewPost = () => {
-  const [createPost, { loading, error }] = useMutation(
-    CREATE_POST_MUTATION,
-    {
-      onCompleted: () => {
-        toast.success('Post created')
-        navigate(routes.posts())
-      },
-      onError: (error) => {
-        toast.error(error.message)
-      },
-    }
-  )
+  const [createPost, { loading, error }] = useMutation(CREATE_POST_MUTATION, {
+    onCompleted: () => {
+      toast.success('Post created')
+      navigate(routes.posts())
+    },
+    onError: (error) => {
+      toast.error(error.message)
+    },
+  })
 
   const onSave = (input: CreatePostInput) => {
     createPost({ variables: { input } })
@@ -34,7 +32,12 @@ const NewPost = () => {
 
   return (
     <div className="rw-segment">
-      <header className="rw-segment-header">
+      <header
+        css={css`
+          background-color: red;
+        ´}
+        className="rw-segment-header"
+      >
         <h2 className="rw-heading rw-heading-secondary">New Post</h2>
       </header>
       <div className="rw-segment-main">
