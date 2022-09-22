@@ -1,31 +1,31 @@
 import { css } from '@emotion/react'
 import {
+  BackgroundImage,
   Box,
   Button,
   Card,
   Center,
-  BackgroundImage,
   Image,
   UnstyledButton,
 } from '@mantine/core'
+import Div100vh from 'react-div-100vh'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { MetaTags } from '@redwoodjs/web'
 
 import Tappable from 'src/components/Tappable/Tappable'
+import Tappables from 'src/components/Tappables/Tappables'
 
 const imageButtonCSS = css`
   width: 100%;
   height: 100%;
   border-radius: 0.5em;
-  transition: 0.15s;
-  :focus {
-    outline: none;
-  }
+  outline: none;
+  border: none;
+  transition: all 0.125s ease-in-out;
+  opacity: 0.875;
   :hover {
-    outline: none;
-    opacity: 0.8;
-    background-color: rgba(0, 0, 0, 0.05);
-    backdrop-filter: none;
+    opacity: 0.675;
   }
   :disabled {
     cursor: default;
@@ -54,128 +54,144 @@ const HomePage = () => {
   return (
     <>
       <MetaTags title="FuckFriends" description="The best of both worlds" />
-      <Center
-        css={css`
-          height: 100%;
-          width: 100%;
-          max-height: 100%;
-        `}
-      >
-        <Box
+      <Div100vh>
+        <Center
           css={css`
-            display: grid;
-            grid-template-areas:
-              'logo'
-              'main'
-              'menu';
-            grid-template-rows: auto 1fr auto;
-            grid-template-columns: 1fr;
-            gap: 1rem;
             width: 100%;
             height: 100%;
-            max-height: 800px;
-            max-width: 500px;
-            overflow: hidden;
-            overscroll-behavior: none;
+            max-height: 100%;
           `}
-          px="xs"
         >
           <Box
             css={css`
-              grid-area: logo;
-              height: fit-content;
-            `}
-          >
-            <Center>
-              <Image
-                css={css`
-                  max-width: 300px;
-                `}
-                src="/logo.png"
-              />
-            </Center>
-          </Box>
-          <Box
-            css={css`
-              grid-area: main;
+              display: grid;
+              grid-template-areas:
+                'logo'
+                'main'
+                'menu';
+              grid-template-rows: auto 1fr auto;
+              grid-template-columns: 1fr;
+              gap: 1rem;
+              width: 100%;
               height: 100%;
-              max-height: 100%;
+              max-height: 800px;
+              max-width: 500px;
+              overflow: hidden;
+              overscroll-behavior: none;
             `}
+            px="xs"
           >
-            <Card
-              p={0}
-              m={0}
-              shadow="sm"
-              withBorder
-              radius="md"
+            <Box
               css={css`
-                height: 100%;
-                max-height: 100%;
-                overflow: hidden;
+                grid-area: logo;
+                height: fit-content;
               `}
             >
-              <Box
+              <Center>
+                <Image
+                  css={css`
+                    max-width: 300px;
+                  `}
+                  src="/logo.png"
+                />
+              </Center>
+            </Box>
+            <Box
+              css={css`
+                grid-area: main;
+                height: 100%;
+                max-height: 100%;
+              `}
+            >
+              <Card
+                p={0}
+                m={0}
+                shadow="sm"
+                withBorder
+                radius="md"
                 css={css`
-                  width: 100%;
                   height: 100%;
-                  display: flex;
+                  max-height: 100%;
+                  overflow: hidden;
                 `}
               >
-                <BackgroundImage
+                <Box
                   css={css`
-                    & {
-                      background-position: top;
-                    }
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
                   `}
-                  src={images[imageIndex]}
                 >
-                  <Button.Group
+                  <BackgroundImage
                     css={css`
-                      width: 100%;
-                      height: 100%;
+                      & {
+                        background-position: top;
+                      }
                     `}
+                    src={images[imageIndex]}
                   >
-                    <UnstyledButton
-                      disabled={imageIndex === 0}
-                      css={imageButtonCSS}
-                      onClick={onLeftClick}
-                    />
-                    <UnstyledButton
-                      disabled={imageIndex === images.length - 1}
-                      css={imageButtonCSS}
-                      onClick={onRightClick}
-                    />
-                  </Button.Group>
-                </BackgroundImage>
-              </Box>
-            </Card>
+                    <Button.Group
+                      css={css`
+                        width: 100%;
+                        height: 100%;
+                      `}
+                    >
+                      <UnstyledButton
+                        disabled={imageIndex === 0}
+                        css={[
+                          css`
+                            display: flex;
+                            align-items: center;
+                            justify-content: start;
+                            color: white;
+                          `,
+                          imageButtonCSS,
+                        ]}
+                        onClick={onLeftClick}
+                      >
+                        <FaChevronLeft size={50} />
+                      </UnstyledButton>
+                      <UnstyledButton
+                        disabled={imageIndex === images.length - 1}
+                        css={[
+                          css`
+                            display: flex;
+                            align-items: center;
+                            justify-content: end;
+                            color: white;
+                          `,
+                          imageButtonCSS,
+                        ]}
+                        onClick={onRightClick}
+                      >
+                        <FaChevronRight size={50} />
+                      </UnstyledButton>
+                    </Button.Group>
+                  </BackgroundImage>
+                </Box>
+              </Card>
+            </Box>
+            <Box
+              css={css`
+                grid-area: menu;
+              `}
+            >
+              <Center>
+                <Tappables
+                  tappables={[
+                    {
+                      children: '🍑',
+                    },
+                    {
+                      children: '🍆',
+                    },
+                  ]}
+                />
+              </Center>
+            </Box>
           </Box>
-          <Box
-            css={css`
-              grid-area: menu;
-            `}
-          >
-            <Center>
-              <Button.Group my="xs">
-                <Tappable
-                  onClick={() => {
-                    alert("Mail sent to Anders. He's gonna be so happy!")
-                  }}
-                >
-                  🍑
-                </Tappable>
-                <Tappable
-                  onClick={() => {
-                    alert("Mail sent to Anders. He's gonna be so happy!")
-                  }}
-                >
-                  🍆
-                </Tappable>
-              </Button.Group>
-            </Center>
-          </Box>
-        </Box>
-      </Center>
+        </Center>
+      </Div100vh>
     </>
   )
 }
