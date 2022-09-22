@@ -32,12 +32,7 @@ const NewPost = () => {
 
   return (
     <div className="rw-segment">
-      <header
-        css={css`
-          background-color: red;
-        ´}
-        className="rw-segment-header"
-      >
+      <header className="rw-segment-header">
         <h2 className="rw-heading rw-heading-secondary">New Post</h2>
       </header>
       <div className="rw-segment-main">
