@@ -1,6 +1,11 @@
+import { ComponentPropsWithoutRef } from 'react'
+
 import { ActionIcon, ActionIconProps, Text } from '@mantine/core'
 
-const Tappable = ({ children, ...props }: ActionIconProps) => {
+const Tappable = ({
+  children,
+  ...props
+}: ComponentPropsWithoutRef<'button'> & ActionIconProps) => {
   return (
     <ActionIcon variant="subtle" size={65} {...props}>
       <Text size={50}>{children}</Text>

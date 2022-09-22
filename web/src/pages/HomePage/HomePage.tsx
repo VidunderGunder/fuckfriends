@@ -13,12 +13,11 @@ import { MetaTags } from '@redwoodjs/web'
 
 import Tappable from 'src/components/Tappable/Tappable'
 
-const imageButtonMargin = '0.25em'
 const imageButtonCSS = css`
   width: 100%;
   height: 100%;
-  margin: ${imageButtonMargin};
   border-radius: 0.5em;
+  transition: 0.15s;
   :focus {
     outline: none;
   }
@@ -27,6 +26,10 @@ const imageButtonCSS = css`
     opacity: 0.8;
     background-color: rgba(0, 0, 0, 0.05);
     backdrop-filter: none;
+  }
+  :disabled {
+    cursor: default;
+    opacity: 0;
   }
 `
 const images = [
@@ -39,24 +42,23 @@ const images = [
 const HomePage = () => {
   const [imageIndex, setImageIndex] = React.useState(0)
 
-  function onRightClick(e) {
-    e.preventDefault()
-    const nextIndex = imageIndex + 1
-    setImageIndex(nextIndex >= images.length - 1 ? 0 : nextIndex)
-  }
   function onLeftClick(e) {
     e.preventDefault()
-    const nextIndex = imageIndex - 1
-    setImageIndex(nextIndex < 0 ? images.length - 1 : nextIndex)
+    setImageIndex(imageIndex - 1)
+  }
+  function onRightClick(e) {
+    e.preventDefault()
+    setImageIndex(imageIndex + 1)
   }
 
   return (
     <>
-      <MetaTags title="Home" description="Home page" />
+      <MetaTags title="FuckFriends" description="The best of both worlds" />
       <Center
         css={css`
           height: 100%;
           width: 100%;
+          max-height: 100%;
         `}
       >
         <Box
@@ -134,10 +136,12 @@ const HomePage = () => {
                     `}
                   >
                     <UnstyledButton
+                      disabled={imageIndex === 0}
                       css={imageButtonCSS}
                       onClick={onLeftClick}
                     />
                     <UnstyledButton
+                      disabled={imageIndex === images.length - 1}
                       css={imageButtonCSS}
                       onClick={onRightClick}
                     />
@@ -153,8 +157,20 @@ const HomePage = () => {
           >
             <Center>
               <Button.Group my="xs">
-                <Tappable>🍑</Tappable>
-                <Tappable>🍆</Tappable>
+                <Tappable
+                  onClick={() => {
+                    alert("Mail sent to Anders. He's gonna be so happy!")
+                  }}
+                >
+                  🍑
+                </Tappable>
+                <Tappable
+                  onClick={() => {
+                    alert("Mail sent to Anders. He's gonna be so happy!")
+                  }}
+                >
+                  🍆
+                </Tappable>
               </Button.Group>
             </Center>
           </Box>
