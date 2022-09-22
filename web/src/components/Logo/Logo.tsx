@@ -1,9 +1,14 @@
+import { css } from '@emotion/react'
+import { Image } from '@mantine/core'
+
 const Logo = () => {
   return (
-    <div>
-      <h2>{'Logo'}</h2>
-      <p>{'Find me in ./web/src/components/Logo/Logo.tsx'}</p>
-    </div>
+    <Image
+      css={css`
+        max-width: 300px;
+      `}
+      src="/logo.png"
+    />
   )
 }
 

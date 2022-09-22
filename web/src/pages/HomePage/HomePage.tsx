@@ -1,56 +1,15 @@
 import { css } from '@emotion/react'
-import {
-  BackgroundImage,
-  Box,
-  Button,
-  Card,
-  Center,
-  Image,
-  UnstyledButton,
-} from '@mantine/core'
+import { Box, Center, Image } from '@mantine/core'
 import Div100vh from 'react-div-100vh'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import Tappable from 'src/components/Tappable/Tappable'
+import Area from 'src/components/Area/Area'
+import Carousel from 'src/components/Carousel/Carousel'
+import Logo from 'src/components/Logo/Logo'
 import Tappables from 'src/components/Tappables/Tappables'
 
-const imageButtonCSS = css`
-  width: 100%;
-  height: 100%;
-  border-radius: 0.5em;
-  outline: none;
-  border: none;
-  transition: all 0.125s ease-in-out;
-  opacity: 0.875;
-  :hover {
-    opacity: 0.675;
-  }
-  :disabled {
-    cursor: default;
-    opacity: 0;
-  }
-`
-const images = [
-  '/examples/1.jpg',
-  '/examples/2.jpg',
-  '/examples/3.jpg',
-  '/examples/4.jpg',
-]
-
 const HomePage = () => {
-  const [imageIndex, setImageIndex] = React.useState(0)
-
-  function onLeftClick(e) {
-    e.preventDefault()
-    setImageIndex(imageIndex - 1)
-  }
-  function onRightClick(e) {
-    e.preventDefault()
-    setImageIndex(imageIndex + 1)
-  }
-
   return (
     <>
       <MetaTags title="FuckFriends" description="The best of both worlds" />
@@ -81,97 +40,29 @@ const HomePage = () => {
             `}
             px="xs"
           >
-            <Box
+            <Area
+              _="logo"
               css={css`
                 grid-area: logo;
                 height: fit-content;
               `}
             >
               <Center>
-                <Image
-                  css={css`
-                    max-width: 300px;
-                  `}
-                  src="/logo.png"
-                />
+                <Logo />
               </Center>
-            </Box>
-            <Box
+            </Area>
+            <Area
+              _="main"
               css={css`
                 grid-area: main;
                 height: 100%;
                 max-height: 100%;
               `}
             >
-              <Card
-                p={0}
-                m={0}
-                shadow="sm"
-                withBorder
-                radius="md"
-                css={css`
-                  height: 100%;
-                  max-height: 100%;
-                  overflow: hidden;
-                `}
-              >
-                <Box
-                  css={css`
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                  `}
-                >
-                  <BackgroundImage
-                    css={css`
-                      & {
-                        background-position: top;
-                      }
-                    `}
-                    src={images[imageIndex]}
-                  >
-                    <Button.Group
-                      css={css`
-                        width: 100%;
-                        height: 100%;
-                      `}
-                    >
-                      <UnstyledButton
-                        disabled={imageIndex === 0}
-                        css={[
-                          css`
-                            display: flex;
-                            align-items: center;
-                            justify-content: start;
-                            color: white;
-                          `,
-                          imageButtonCSS,
-                        ]}
-                        onClick={onLeftClick}
-                      >
-                        <FaChevronLeft size={50} />
-                      </UnstyledButton>
-                      <UnstyledButton
-                        disabled={imageIndex === images.length - 1}
-                        css={[
-                          css`
-                            display: flex;
-                            align-items: center;
-                            justify-content: end;
-                            color: white;
-                          `,
-                          imageButtonCSS,
-                        ]}
-                        onClick={onRightClick}
-                      >
-                        <FaChevronRight size={50} />
-                      </UnstyledButton>
-                    </Button.Group>
-                  </BackgroundImage>
-                </Box>
-              </Card>
-            </Box>
-            <Box
+              <Carousel />
+            </Area>
+            <Area
+              _="menu"
               css={css`
                 grid-area: menu;
               `}
@@ -188,7 +79,7 @@ const HomePage = () => {
                   ]}
                 />
               </Center>
-            </Box>
+            </Area>
           </Box>
         </Center>
       </Div100vh>
