@@ -63,7 +63,7 @@ const AppTortillaLayout = ({ children }: AppTortillaLayoutProps) => {
             grid-template-columns: 1fr;
             width: 100%;
             height: 100%;
-            max-height: 800px;
+            max-height: 900px;
             max-width: 500px;
             overflow: hidden;
             overscroll-behavior: none;

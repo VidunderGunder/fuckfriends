@@ -1,5 +1,13 @@
 import { css } from '@emotion/react'
-import { Box, Center, FileButton, Grid } from '@mantine/core'
+import {
+  ActionIcon,
+  Box,
+  Button,
+  Center,
+  FileButton,
+  Grid,
+} from '@mantine/core'
+import { FaPlus } from 'react-icons/fa'
 
 import { MetaTags } from '@redwoodjs/web'
 
@@ -63,16 +71,16 @@ const Profile = ({
                     accept="image/png,image/jpeg"
                   >
                     {(props) => (
-                      <Tappable
+                      <ActionIcon
                         css={css`
                           height: 100%;
                           width: 100%;
-                          opacity: 0.5;
+                          font-size: 1.25rem;
                         `}
                         {...props}
                       >
-                        ➕
-                      </Tappable>
+                        <FaPlus opacity={0.375} />
+                      </ActionIcon>
                     )}
                   </FileButton>
                 ) : null}

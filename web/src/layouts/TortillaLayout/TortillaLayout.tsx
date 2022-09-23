@@ -25,6 +25,13 @@ const TortillaLayout = ({
             margin: 0;
             box-sizing: border-box;
           }
+          /* Disable text selection */
+          * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+          }
         `}
       />
       <Div100vh
