@@ -45,7 +45,7 @@ const Logo = () => {
             FckFrnds
           </Title>
           <Text align="right" size="xs" weight={900} color={secondary} inline>
-            The Best of Both Worlds
+            The Best of Both Cheecks
           </Text>
         </Box>
         <Image src="/peach.svg" css={iconCSS} />
