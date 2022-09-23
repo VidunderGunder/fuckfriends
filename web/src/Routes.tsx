@@ -10,6 +10,7 @@
 import { Router, Route, Set } from '@redwoodjs/router'
 
 import AppTortillaLayout from './layouts/AppTortillaLayout/AppTortillaLayout'
+import ChatPage from './pages/ChatPage/ChatPage'
 import HomePage from './pages/HomePage/HomePage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 
@@ -19,6 +20,7 @@ const Routes = () => {
       <Route path="/login" page={LoginPage} name="login" />
       <Set wrap={AppTortillaLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/chat" page={ChatPage} name="chat" />
         <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/settings" page={SettingsPage} name="settings" />
       </Set>

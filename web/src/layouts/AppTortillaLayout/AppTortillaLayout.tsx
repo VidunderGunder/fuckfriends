@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { Box, Center } from '@mantine/core'
-import { FaCog, FaUser } from 'react-icons/fa'
+import { FaCog, FaCommentAlt, FaUser } from 'react-icons/fa'
 import { MdSwipe } from 'react-icons/md'
 
 import { navigate, useLocation } from '@redwoodjs/router'
@@ -106,6 +106,11 @@ const AppTortillaLayout = ({ children }: AppTortillaLayoutProps) => {
             >
               <TappableLink to="/profile" icon={<FaUser />} />
               <TappableLink to="/" icon={<MdSwipe />} iconFactor={0.75} />
+              <TappableLink
+                to="/chat"
+                icon={<FaCommentAlt />}
+                // iconFactor={0.75}
+              />
               <TappableLink to="/settings" icon={<FaCog />} />
             </Center>
           </Area>
