@@ -1,3 +1,3 @@
-# FuckFriends
+# FckFrnds
 
 🍑 + 🍆 = 💖

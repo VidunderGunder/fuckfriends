@@ -10,7 +10,7 @@ import ImageCardButton from 'src/components/ImageCardButton/ImageCardButton'
 const HomePage = () => {
   return (
     <>
-      <MetaTags title="FuckFriends" description="The best of both worlds" />
+      <MetaTags title="FckFrnds" description="The best of both worlds" />
 
       <Carousel />
       <Box

@@ -1,6 +1,13 @@
 import { css } from '@emotion/react'
-import { Box, Text, Title, useMantineTheme } from '@mantine/core'
-import { IoPeopleCircle } from 'react-icons/io5'
+import { Box, Image, Text, Title, useMantineTheme } from '@mantine/core'
+
+const iconSize = 59
+const iconCSS = css`
+  width: ${iconSize}px;
+  height: ${iconSize}px;
+  max-width: ${iconSize}px;
+  max-height: ${iconSize}px;
+`
 
 const Logo = () => {
   const {
@@ -14,7 +21,7 @@ const Logo = () => {
       <Box
         css={css`
           display: flex;
-          gap: 1em;
+          gap: 0.675em;
           align-items: center;
         `}
       >
@@ -41,27 +48,8 @@ const Logo = () => {
             The Best of Both Worlds
           </Text>
         </Box>
-        <Text
-          inline
-          m={-8}
-          p={0}
-          color={secondary}
-          css={css`
-            font-family: emoji-color;
-            font-size: 50px;
-          `}
-          role="img"
-          aria-label="peachy peach"
-        >
-          🍑
-        </Text>
+        <Image src="/peach.svg" css={iconCSS} />
       </Box>
-      {/* <Image
-        css={css`
-          max-width: 300px;
-        `}
-        src="/logo.png"
-      /> */}
     </Box>
   )
 }

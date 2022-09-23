@@ -179,7 +179,7 @@ export const handler = async (
       // *must* re-enter username and password to authenticate (WebAuthn will
       // then be re-enabled for this amount of time).
       expires: 60 * 60 * 24 * 365 * 10,
-      name: 'FuckFriends',
+      name: 'FckFrnds',
       domain:
         process.env.NODE_ENV === 'development' ? 'localhost' : 'server.com',
       origin:
