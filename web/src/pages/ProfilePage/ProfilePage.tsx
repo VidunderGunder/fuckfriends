@@ -12,7 +12,6 @@ import { FaPlus } from 'react-icons/fa'
 import { MetaTags } from '@redwoodjs/web'
 
 import ImageCard from 'src/components/ImageCard/ImageCard'
-import Tappable from 'src/components/Tappable/Tappable'
 
 const Profile = ({
   images = [
@@ -52,7 +51,7 @@ const Profile = ({
         >
           {images?.map((image, i) => (
             <Grid.Col
-              key={image}
+              key={image ?? i}
               css={css`
                 height: calc(100% / 3);
               `}
