@@ -1,3 +1,6 @@
+import { css } from '@emotion/react'
+import { Button, Stack } from '@mantine/core'
+
 import { MetaTags } from '@redwoodjs/web'
 
 const SettingsPage = () => {
@@ -5,10 +8,17 @@ const SettingsPage = () => {
     <>
       <MetaTags title="Settings" description="Settings page" />
 
-      <h1>SettingsPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/SettingsPage/SettingsPage.tsx</code>
-      </p>
+      <Stack
+        css={css`
+          height: 100%;
+        `}
+        justify="space-between"
+      >
+        <Stack></Stack>
+        <Button color="red" fullWidth>
+          Logout
+        </Button>
+      </Stack>
     </>
   )
 }

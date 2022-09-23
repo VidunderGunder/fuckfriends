@@ -1,16 +1,45 @@
 import { css } from '@emotion/react'
 import { Box, Center } from '@mantine/core'
+import { FaCog, FaUser } from 'react-icons/fa'
+import { MdSwipe } from 'react-icons/md'
 
-import { navigate, routes } from '@redwoodjs/router'
+import { navigate, useLocation } from '@redwoodjs/router'
 
 import Area from 'src/components/Area/Area'
 import Logo from 'src/components/Logo/Logo'
-import Tappables from 'src/components/Tappables/Tappables'
+import Tappable, { TappableProps } from 'src/components/Tappable/Tappable'
 
 import TortillaLayout from '../TortillaLayout/TortillaLayout'
 
 type AppTortillaLayoutProps = {
   children?: React.ReactNode
+}
+
+const gap = '1.5rem'
+
+function TappableLink({
+  to,
+  icon,
+  children,
+  ...props
+}: TappableProps & { to: string }) {
+  const { pathname } = useLocation()
+  const current = pathname === to
+  return (
+    <Tappable
+      size={70}
+      iconFactor={0.375}
+      icon={icon}
+      onClick={() => {
+        navigate(to)
+      }}
+      disabled={current}
+      variant={current ? 'transparent' : 'subtle'}
+      {...props}
+    >
+      {children}
+    </Tappable>
+  )
 }
 
 const AppTortillaLayout = ({ children }: AppTortillaLayoutProps) => {
@@ -38,8 +67,9 @@ const AppTortillaLayout = ({ children }: AppTortillaLayoutProps) => {
             max-width: 500px;
             overflow: hidden;
             overscroll-behavior: none;
-            gap: 1rem;
+            gap: ${gap};
           `}
+          py={gap}
           px="xs"
         >
           <Area
@@ -69,29 +99,14 @@ const AppTortillaLayout = ({ children }: AppTortillaLayoutProps) => {
               grid-area: menu;
             `}
           >
-            <Center>
-              <Tappables
-                tappables={[
-                  {
-                    children: '💁',
-                    onClick: () => {
-                      navigate(routes.profile())
-                    },
-                  },
-                  {
-                    children: '🍑',
-                    onClick: () => {
-                      navigate(routes.home())
-                    },
-                  },
-                  {
-                    children: '⚙️',
-                    onClick: () => {
-                      navigate(routes.settings())
-                    },
-                  },
-                ]}
-              />
+            <Center
+              css={css`
+                gap: 2rem;
+              `}
+            >
+              <TappableLink to="/profile" icon={<FaUser />} />
+              <TappableLink to="/" icon={<MdSwipe />} iconFactor={0.75} />
+              <TappableLink to="/settings" icon={<FaCog />} />
             </Center>
           </Area>
         </Box>
