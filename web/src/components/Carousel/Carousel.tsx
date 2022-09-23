@@ -1,12 +1,8 @@
 import { css } from '@emotion/react'
-import {
-  BackgroundImage,
-  Box,
-  Button,
-  Card,
-  UnstyledButton,
-} from '@mantine/core'
+import { Box, UnstyledButton } from '@mantine/core'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+
+import ImageCard from '../ImageCard/ImageCard'
 
 const images = [
   '/examples/1.jpg',
@@ -45,73 +41,46 @@ const Carousel = () => {
   }
 
   return (
-    <Card
-      p={0}
-      m={0}
-      shadow="sm"
-      withBorder
-      radius="md"
-      css={css`
-        height: 100%;
-        max-height: 100%;
-        overflow: hidden;
-      `}
-    >
+    <ImageCard src={images[imageIndex]}>
       <Box
         css={css`
+          display: flex;
           width: 100%;
           height: 100%;
-          display: flex;
         `}
       >
-        <BackgroundImage
-          css={css`
-            & {
-              background-position: top;
-            }
-          `}
-          src={images[imageIndex]}
+        <UnstyledButton
+          disabled={imageIndex === 0}
+          css={[
+            css`
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              color: white;
+            `,
+            imageButtonCSS,
+          ]}
+          onClick={onLeftClick}
         >
-          <Button.Group
-            css={css`
-              width: 100%;
-              height: 100%;
-            `}
-          >
-            <UnstyledButton
-              disabled={imageIndex === 0}
-              css={[
-                css`
-                  display: flex;
-                  align-items: center;
-                  justify-content: start;
-                  color: white;
-                `,
-                imageButtonCSS,
-              ]}
-              onClick={onLeftClick}
-            >
-              <FaChevronLeft size={50} />
-            </UnstyledButton>
-            <UnstyledButton
-              disabled={imageIndex === images.length - 1}
-              css={[
-                css`
-                  display: flex;
-                  align-items: center;
-                  justify-content: end;
-                  color: white;
-                `,
-                imageButtonCSS,
-              ]}
-              onClick={onRightClick}
-            >
-              <FaChevronRight size={50} />
-            </UnstyledButton>
-          </Button.Group>
-        </BackgroundImage>
+          <FaChevronLeft size={50} />
+        </UnstyledButton>
+        <UnstyledButton
+          disabled={imageIndex === images.length - 1}
+          css={[
+            css`
+              display: flex;
+              align-items: center;
+              justify-content: end;
+              color: white;
+            `,
+            imageButtonCSS,
+          ]}
+          onClick={onRightClick}
+        >
+          <FaChevronRight size={50} />
+        </UnstyledButton>
       </Box>
-    </Card>
+    </ImageCard>
   )
 }
 

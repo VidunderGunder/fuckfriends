@@ -9,4 +9,7 @@ export const generated = () => {
 export default {
   title: 'Pages/HomePage',
   component: HomePage,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as ComponentMeta<typeof HomePage>

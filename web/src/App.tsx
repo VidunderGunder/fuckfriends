@@ -1,4 +1,3 @@
-import { Global, css } from '@emotion/react'
 import { MantineProvider } from '@mantine/core'
 import * as theme from 'config/mantine.config'
 
@@ -15,24 +14,6 @@ import './index.css'
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
-    <Global
-      styles={css`
-        html,
-        body,
-        #redwood-app {
-          height: 100%;
-          overscroll-behavior: none;
-        }
-        html,
-        body,
-        div,
-        span {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-        }
-      `}
-    />
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider type="dbAuth" client={WebAuthnClient}>
         <MantineProvider theme={theme}>

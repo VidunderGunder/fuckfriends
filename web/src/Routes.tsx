@@ -7,14 +7,21 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Router, Route } from '@redwoodjs/router'
+import { Router, Route, Set } from '@redwoodjs/router'
 
+import AppTortillaLayout from './layouts/AppTortillaLayout/AppTortillaLayout'
 import HomePage from './pages/HomePage/HomePage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 const Routes = () => {
   return (
     <Router>
-      <Route path="/" page={HomePage} name="home" />
+      <Route path="/login" page={LoginPage} name="login" />
+      <Set wrap={AppTortillaLayout}>
+        <Route path="/" page={HomePage} name="home" />
+        <Route path="/profile" page={ProfilePage} name="profile" />
+        <Route path="/settings" page={SettingsPage} name="settings" />
+      </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
   )

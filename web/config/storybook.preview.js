@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import { MantineProvider } from '@mantine/core'
 import * as theme from 'config/mantine.config'
 
@@ -24,3 +25,13 @@ const withMantine = (StoryFn) => {
 }
 
 export const decorators = [withMantine]
+
+export const parameters = {
+  docs: {
+    isCodeExpanded: true,
+  },
+  layout: 'centered',
+  options: {
+    showPanel: true,
+  },
+}
