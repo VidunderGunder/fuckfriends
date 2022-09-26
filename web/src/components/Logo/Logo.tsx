@@ -42,7 +42,7 @@ const Logo = () => {
               font-family: titanone;
             `}
           >
-            FckFrnds
+            FuckFriends
           </Title>
           <Text align="right" size="xs" weight={900} color={secondary} inline>
             The Best of Both Cheecks
